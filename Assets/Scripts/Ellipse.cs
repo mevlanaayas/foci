@@ -13,28 +13,23 @@ public class Ellipse : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            CreatePoint();
-        }
-
         CreatePoint();
     }
 
     private void CreatePoint()
     {
+        if (_currentPoint == pointCount && !_fociCalculated)
+        {
+            CreateFoci();
+            return;
+        }
+
         var angle = (float) _currentPoint / pointCount * 360 * Mathf.Deg2Rad;
         var x = Mathf.Sin(angle) * height;
         var y = transform.position.y;
         var z = Mathf.Cos(angle) * width;
 
         var target = new Vector3(x, y, z);
-
-        if (_currentPoint == pointCount && !_fociCalculated)
-        {
-            CreateFoci();
-            return;
-        }
 
         _currentPoint++;
         Instantiate(pointPrefab, target + transform.position, Quaternion.identity);
@@ -45,9 +40,11 @@ public class Ellipse : MonoBehaviour
         // TODO: make foci points property on ellipse object
         var fociDistance = Mathf.Sqrt(Mathf.Abs(width * width - height * height));
         var transformPosition = transform.position;
-        var firstFociPosition = new Vector3(transformPosition.x, transformPosition.y, transformPosition.z + fociDistance);
+        var firstFociPosition =
+            new Vector3(transformPosition.x, transformPosition.y, transformPosition.z + fociDistance);
         Instantiate(pointPrefab, firstFociPosition, Quaternion.identity);
-        var secondFociPosition = new Vector3(transformPosition.x, transformPosition.y, transformPosition.z -fociDistance);
+        var secondFociPosition =
+            new Vector3(transformPosition.x, transformPosition.y, transformPosition.z - fociDistance);
         Instantiate(pointPrefab, secondFociPosition, Quaternion.identity);
         _fociCalculated = true;
     }
