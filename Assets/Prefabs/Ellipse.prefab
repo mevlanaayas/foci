@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointCount: 36
-  height: 3
-  width: 5
+  height: 6
+  width: 10
   pointPrefab: {fileID: 3045368174345982022, guid: 332aaf6e1d680b84b8e16173e3eab7be,
     type: 3}
