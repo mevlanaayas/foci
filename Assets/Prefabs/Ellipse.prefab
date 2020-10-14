@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f251474526e9a0d40a9b27b756bd4831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointCount: 36
+  pointCount: 72
   height: 6
   width: 10
   pointPrefab: {fileID: 3045368174345982022, guid: 332aaf6e1d680b84b8e16173e3eab7be,

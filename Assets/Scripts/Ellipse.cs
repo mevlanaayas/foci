@@ -13,11 +13,6 @@ public class Ellipse : MonoBehaviour
 
     private void Update()
     {
-        CreatePoint();
-    }
-
-    private void CreatePoint()
-    {
         if (_currentPoint == pointCount)
         {
             if (!_fociCalculated)
@@ -28,6 +23,11 @@ public class Ellipse : MonoBehaviour
             return;
         }
 
+        CreatePoint();
+    }
+
+    private void CreatePoint()
+    {
         var angle = (float) _currentPoint / pointCount * 360 * Mathf.Deg2Rad;
         var x = Mathf.Sin(angle) * height;
         var y = transform.position.y;
@@ -36,7 +36,7 @@ public class Ellipse : MonoBehaviour
         var target = new Vector3(x, y, z);
 
         _currentPoint++;
-        Instantiate(pointPrefab, target + transform.position, Quaternion.identity);
+        Instantiate(pointPrefab, target + transform.position, Quaternion.identity, transform);
     }
 
     private void CreateFoci()
