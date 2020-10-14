@@ -18,9 +18,13 @@ public class Ellipse : MonoBehaviour
 
     private void CreatePoint()
     {
-        if (_currentPoint == pointCount && !_fociCalculated)
+        if (_currentPoint == pointCount)
         {
-            CreateFoci();
+            if (!_fociCalculated)
+            {
+                CreateFoci();
+            }
+
             return;
         }
 
